@@ -1,3 +1,2 @@
 # torpedo
-torp game
-lets test
+First game.
