@@ -80,8 +80,13 @@ def multiPlayer():
         player_2_hitpoints = player_2_hitpoints - shoot('1')
         print(player_2, "It's your turn to shoot!")
         player_1_hitpoints = player_1_hitpoints - shoot('2')
-
     
+    if player_1_hitpoints == 0 and player_2_hitpoints > 0:
+        print(player_2, "Nyert")
+    elif player_2_hitpoints == 0 and player_1_hitpoints > 0:
+        print(player_1, "Nyert")
+    else:
+        print("Döntetlen")
 
 def printBoard(board):
     print('   A  B  C  D  E  F  G  H  I  J')
