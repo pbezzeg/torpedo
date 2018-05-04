@@ -5,15 +5,22 @@ board_2_ships = [[0 for x in range(10)] for y in range(10)]
 
 def mainMenu():
     print('Hello and welcome to Battleships!')
-    chose = int(input("1. Single player \n2. Multiplayer\n"))
-    if chose == 1:
-        singlePlayer()
-    elif chose == 2:
-        multiPlayer()
+    chose = 0
+    while chose != 3:
+        print('\n---Main Menu---\n')
+        chose =int(input("1. Single player \n2. Multiplayer\n3. To quit\n"))
+        if chose == 1:
+            singlePlayer()
+        elif chose == 2:
+            multiPlayer()
+
     
 def singlePlayer():
     print('You have started Singleplayer NOT YET IMPLEMENTED')
     player1 = input('Enter your name: ')
+    player2 = "YOU CAN'T WIN AGAINTS ME"
+
+
 
 def shoot(who):
         
@@ -43,23 +50,23 @@ def shoot(who):
     if who == '1':
         if board_2_ships[second_coordinate][first_coordinate] == 1:
             board_2[second_coordinate][first_coordinate] = '*'
-            print('HIT!')
+            print('\nHIT!\n')
             newprintboard(board_2)
             return 1
         else:
             board_2[second_coordinate][first_coordinate] = '-'
-            print('MISS!')
+            print('\nMISS!\n')
             newprintboard(board_2)
             return 0
     else: 
         if board_1_ships[second_coordinate][first_coordinate] == 1:
             board_1[second_coordinate][first_coordinate] = '*'
-            print('HIT!')
+            print('\nHIT!\n')
             newprintboard(board_1)
             return 1
         else:
             board_1[second_coordinate][first_coordinate] = '-'
-            print('MISS!')
+            print('\nMISS!\n')
             newprintboard(board_1)
             return 0
 
@@ -76,17 +83,21 @@ def multiPlayer():
     player_2_hitpoints = 2
 
     while player_1_hitpoints > 0 and player_2_hitpoints > 0:
-        print(player_1, "It's your turn to shoot!")
+        print('\n',player_1, "It's your turn to shoot!")
         player_2_hitpoints = player_2_hitpoints - shoot('1')
-        print(player_2, "It's your turn to shoot!")
+        print('\n',player_2, "It's your turn to shoot!")
         player_1_hitpoints = player_1_hitpoints - shoot('2')
-    
+
     if player_1_hitpoints == 0 and player_2_hitpoints > 0:
-        print(player_2, "Nyert")
+        print(player_2, " WON!")
     elif player_2_hitpoints == 0 and player_1_hitpoints > 0:
-        print(player_1, "Nyert")
+        print(player_1, "WON!")
     else:
-        print("Döntetlen")
+        print("DRAW!")
+    
+    return
+
+    
 
 def printBoard(board):
     print('   A  B  C  D  E  F  G  H  I  J')
@@ -176,7 +187,6 @@ def newprintboard(board):
 
 
 
-multiPlayer()
-
+mainMenu()
 
 
